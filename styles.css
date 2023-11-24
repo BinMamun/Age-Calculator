@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 .container {
@@ -31,8 +32,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  width: 300px;
-  height: 35px;
+  max-width: 400px;
   margin-top: 50px;
   margin-bottom: 30px;
   padding: 30px;
@@ -49,7 +49,6 @@
   outline: none;
   border-radius: 3px;
   padding: 12px 25px;
-  /* background: rgb(228, 228, 228); */
   cursor: pointer;
 
 }
