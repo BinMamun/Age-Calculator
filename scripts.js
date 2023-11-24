@@ -12,33 +12,48 @@ calcuateBtn.addEventListener("click", () => {
   calculateAge(userInput.value);
 })
 
+userInput.addEventListener("keydown",
+  (event) => {
+    if (event.key === "Enter") {
+      calculateAge(userInput.value);
+    }
+  })
+
 function calculateAge(userDate) {
 
-  const userData = {
-    day: 0,
-    month: 0,
-    year: 0
-  };
-
   const d = userDate;
-  userData.day = dayjs(d).$D;
-  userData.month = dayjs(d).$M;
-  userData.year = dayjs(d).$y;
 
-  let year = today.$y - userData.year;
-  let month = today.$M - userData.month;
-  let day = today.$D - userData.day;
+  let year = today.$y - dayjs(d).$y;
+  let month = today.$M - dayjs(d).$M;
+  let day = today.$D - dayjs(d).$D;
 
-  if (today.$D <= userData.day) {
-    month--;
-    day += findDaysofMonth();
-  } else if (today.$M <= userData.month) {
+  if (year < 0) {
+    showResult.innerHTML = month;
+  } else if (month > 0) {
+    console.log(year);
+  } else if (month === 0 && day >= 0) {
+    showResult.innerHTML = year;
+  }
+  else {
     year--;
-    month += 12;
+    if (month <= 0)
+      if (day > 0) month = 12 + month;
+      else month = 11 - month;
+  }
+  if (day < 0) {
+    day = findDaysofMonth() + day;
+    month--;
   }
 
-  showResult.innerHTML = `Your age is <span>${year}</span> years, <span>${month}</span> months and <span>${day}</span> days`
+  if (year < 0) {
+    showResult.innerHTML = "Invalid Date"
+  }
+  else {
+    showResult.innerHTML = `Your age is <span>${year}</span> years, <span>${month}</span> months and <span>${day}</span> days`;
+  }
 }
+
+
 
 function findDaysofMonth() {
   const date = userInput.value;
