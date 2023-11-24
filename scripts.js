@@ -49,14 +49,17 @@ function calculateAge(userDate) {
     showResult.innerHTML = "Invalid Date"
   }
   else {
-    showResult.innerHTML = `Your age is <span>${year}</span> years, <span>${month}</span> months and <span>${day}</span> days`;
+    showResult.innerHTML = `
+    Your age is <span>${year}</span> years,
+    <span>${month}</span> months and 
+    <span>${day}</span> days`;
   }
 }
 
 function findDaysofMonth() {
   const date = userInput.value;
   return dayjs(date).daysInMonth();
-}
+} //return the days of a specific month
 
 
 
