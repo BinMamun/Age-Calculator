@@ -25,25 +25,20 @@ function calculateAge(userDate) {
   userData.month = dayjs(d).$M;
   userData.year = dayjs(d).$y;
 
-  let day = today.$D - userData.day;
-  let month = (today.$M - userData.month);
   let year = today.$y - userData.year;
+  let month = today.$M - userData.month;
+  let day = today.$D - userData.day;
 
   if (today.$D <= userData.day) {
     month--;
     day += findDaysofMonth();
-  }
-  if (today.$M <= userData.month) {
+  } else if (today.$M <= userData.month) {
     year--;
     month += 12;
   }
-  if (today.$y > userData.year) {
-    showResult.innerHTML = "Invalid Date";
-  }
 
-  showResult.innerHTML = `Your age is ${year} years, ${month} months and ${day} days`
+  showResult.innerHTML = `Your age is <span>${year}</span> years, <span>${month}</span> months and <span>${day}</span> days`
 }
-
 
 function findDaysofMonth() {
   const date = userInput.value;

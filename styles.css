@@ -74,3 +74,8 @@
   font-weight: 600;
   color: rgb(255, 0, 0);
 }
+
+.result span {
+  font-weight: 600;
+  color: #ffff03;
+}
